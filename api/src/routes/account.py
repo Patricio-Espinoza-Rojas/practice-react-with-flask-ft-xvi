@@ -31,8 +31,8 @@ def update_profile():
     if not email: return jsonify({ "status": "failed", "message": "Email is required", "data": None }), 400
     #if not password: return jsonify({ "status": "failed", "message": "Password is required", "data": None }), 400
 
-    #userFound = User.query.filter_by(email=email).first()
-    #if userFound and userFound.id != id: return jsonify({ "status": "failed", "message": "Email already exists", "data": None }), 400
+    userFound = User.query.filter_by(email=email).first()
+    if userFound and userFound.id != id: return jsonify({ "status": "failed", "message": "Email already exists", "data": None }), 400
 
     if password != "":
         user.password = generate_password_hash(password)
