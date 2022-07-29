@@ -13,7 +13,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "is_active": self.is_active
+            "is_active": self.is_active,
+            "profile": self.profile.serialize()
         }
 
     def save(self):
